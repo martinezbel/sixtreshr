@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Crea tu gig</h2>
+    </div>
+      <div class="panel-body">
+        <%= form_for @service do |f| %>
+          <% if @service.errors.any? %>
+            <div class="alert alert-info">
+              <h3>Fix the following <%= pluralize(@service.errors.count, "error")%> before continuing
+              </h3>
+                <ul>
+                  <% @service.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+  <% end %>
+      <div class="form-group">
+        <label>Titulo de tu gig</label>
+        <%= f.text_area :title, placeholder: "Ex: Mi servicio sera de puta madre", rows: "2", class: "form-control" %>
+      </div>
+
+        <div class="form-group">
+          <label>Descripcion</label>
+          <%= f.text_area :description, rows: "5", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <label>Pricing</label>
+          <div class="select-control"></div>
+          <%= f.select :price, [["$6","6"],["$12","12"],["$18","18"],["$24","24"]], class: "form-control" %>
+        </div>
+
+        </div>
+        <div class="form-group">
+          <label>Requerimientos</label>
+          <%= f.text_area :requirements, rows: "5", class: "form-control" %>
+        </div>
+
+         <%= f.submit "Publica tu gig", class: "btn btn-primary" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
